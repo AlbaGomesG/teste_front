@@ -9,16 +9,18 @@
 
 .button {
     margin: 5px;
-    padding: 10px 15px;
+    padding: 10px 25px;
     background-color: blue;
+    border-color: aliceblue;
     color: white;
     border-radius: 5px;
 }
 
 .buttonReset {
     margin: 5px;
-    padding: 10px 15px;
-    background-color: green;
+    padding: 10px 25px;
+    background-color: rgb(19, 185, 19);
+    border-color: aliceblue;
     color: white;
     border-radius: 5px;
 }
