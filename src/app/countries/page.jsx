@@ -31,6 +31,7 @@ export default function Countries() {
       setCountries(response.data);
       if (!region) {
         setAllCountries(response.data);
+        toast.success("Todos os países foram carregados com sucesso!")
       }
     } catch (error) {
       console.error("Erro ao carregar países:", error);
@@ -49,16 +50,19 @@ export default function Countries() {
       const cache = sessionStorage.getItem(cacheKey);
 
       if (cache) {
-        setAllCountries(JSON.parse(cache));
+        setCountries(JSON.parse(cache));
+        setIsLoading(false);
         return;
       }
 
       try {
-        const resposta = await axios.get('https://restcountries.com/v3.1/all', { headers });
-        setAllCountries(resposta.data);
+        const resposta = await axios.get('https://restcountries.com/v3.1/all');
+        setCountries(resposta.data);
         sessionStorage.setItem(cacheKey, JSON.stringify(resposta.data));
       } catch (error) {
         alert('Erro ao buscar países')
+      } finally {
+        setIsLoading(false);
       }
     };
 
